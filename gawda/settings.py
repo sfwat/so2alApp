@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'so2alApp'
+    'rest_framework',
+    'so2alApp',
 ]
 
 MIDDLEWARE = [
