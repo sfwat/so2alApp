@@ -40,8 +40,17 @@ class Question(models.Model):
         answer_count = self.answer_count()
         result = {}
         for choice in self.choice.all():
+            if not answer_count:
+                answer_count = 1
             result[choice.choice_text] = (choice.answer_count() / answer_count) * 100
         return result
+
+    @classmethod
+    def retrieve_question(cls, qs_id=None):
+        if not qs_id:
+            return cls.objects.first()
+        else:
+            return cls.objects.exclude(pk__in=qs_id).first()
 
     def __str__(self):
         return self.question

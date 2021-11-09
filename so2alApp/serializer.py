@@ -5,11 +5,19 @@ from .models import Question, Submitter, Choice, Answer
 class SubmitterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Submitter
-        fields = '__all__'
+        fields = ['id', 'name', 'gender', 'answer']
+
+
+class ChoiceSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Choice
+        fields = ('id', 'choice_text')
 
 
 class QuestionSerializer(serializers.ModelSerializer):
-    choice = serializers.StringRelatedField(many=True)
+
+    choice = ChoiceSerializer(many=True, read_only=True)
 
     class Meta:
         model = Question
