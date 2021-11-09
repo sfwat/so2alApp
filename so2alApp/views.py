@@ -1,10 +1,15 @@
 from django.http import Http404
+from django.shortcuts import render
 from rest_framework import generics, mixins, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Submitter
 from .serializer import SubmitterSerializer, QuestionSerializer, AnswerSerializer
 from .models import Question, Answer
+
+
+def index(request):
+    return render(request, "so2al/so2al.html")
 
 
 class SubmitterCreate(mixins.CreateModelMixin, generics.GenericAPIView):

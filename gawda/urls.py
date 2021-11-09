@@ -4,6 +4,7 @@ from so2alApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('so2al/', views.index),
     path('so2al/submitter/', views.SubmitterCreate.as_view()),
     path('so2al/submitter/<int:pk>', views.SubmitterRetrieve.as_view()),
     path('so2al/answer/', views.AnswerSubmit.as_view()),
