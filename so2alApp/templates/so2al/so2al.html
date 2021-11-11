@@ -1,29 +1,87 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html dir="rtl" lang="ar">
     <head>
         <title>So2al</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'so2al/styles.css' %}">
-        <script>
-                <script src="{% static 'so2al/so2al.js' %}"></script>
-        </script>
+        <script src="{% static 'so2al/so2al.js' %}"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
+
     <body>
         <div class="container">
-           <h2 style="margin:1%;"><span class="title-span">So2al App</span></h2>
-            <button class="btn btn-sm btn-outline-primary" id="submitter">Submitter Data</button>
-            <button class="btn btn-sm btn-outline-primary" id="question">Question</button>
-            <button class="btn btn-sm btn-outline-primary" id="question-stats">Stats</button>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand" href="http://localhost:8000/so2al/">Appسؤال</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item active">
+                    <a class="nav-link" id="submitter">بيانات شخصية <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" id="question">الاسئلة</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" id="question-stats">النتائج</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
             <hr>
 
             <div id="submit-view">
+                <form id="submit-form">
+
+            <div class="form-group">
+                الاسم: <input id="submit-name" class="form-control">
             </div>
+            <div class="form-group">
+               الجنسية: <input id="submit-nationality" class="form-control">
+            </div>
+            <div class="form-group">
+                العنوان: <input id="submit-address" class="form-control">
+            </div>
+            <div class="form-group">
+               تاريخ الميلاد: <input id="submit-date" class="form-control" type="date">
+            </div>
+            <div class="form-group">
+                النوع: <select id="submit-gender" class="form-select" aria-label="Default select example">
+                          <option value="M">ذكر</option>
+                          <option value="F">انثى</option>
+                        </select>
+                </div>
+                <input  type="submit" id="submit" class="btn btn-primary" value="التالي"/>
+                    </form>
+                        </div>
 
              <div id="question-view">
+                 <form id="question-form">
+                 <h4 id="question-text"></h4>
+                     <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="first-answer" >
+                          <label class="form-check-label" for="first-answer" id="first-answer-label">
+                          </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="second-answer" >
+                        <label class="form-check-label" for="second-answer" id="second-answer-label">
+                        </label>
+                    </div>
+                     <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="third-answer" >
+                        <label class="form-check-label" for="third-answer" id="third-answer-label">
+                        </label>
+                    </div>
+                     <input  type="submit" id="question-submit" class="btn btn-primary" value="التالي"/>
+                 </form>
              </div>
+             <div id="stats-view">
+                <div id="pie-chart">
 
-            <div id="stats-view">
+                </div>
             </div>
 
 

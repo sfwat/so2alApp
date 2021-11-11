@@ -16,6 +16,7 @@ class SubmitterCreate(mixins.CreateModelMixin, generics.GenericAPIView):
     serializer_class = SubmitterSerializer
 
     def post(self, request):
+        print(request.data)
         return self.create(request)
 
 
@@ -37,7 +38,7 @@ class QuestionRetrieve(APIView):
         if not submitter_id:
             return Response({"message": "userId is missing"})
         qs_id = Answer.objects.filter(submitter=submitter_id).values_list("question")
-        question = Question.get_question(qs_id)
+        question = Question.retrieve_question(qs_id)
         serializer = QuestionSerializer(question)
         return Response(serializer.data)
 

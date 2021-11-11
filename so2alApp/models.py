@@ -38,11 +38,11 @@ class Question(models.Model):
 
     def choice_percent(self):
         answer_count = self.answer_count()
-        result = {}
+        result = []
         for choice in self.choice.all():
             if not answer_count:
                 answer_count = 1
-            result[choice.choice_text] = (choice.answer_count() / answer_count) * 100
+            result.append({"choice": choice.choice_text, "count": choice.answer_count()})
         return result
 
     @classmethod

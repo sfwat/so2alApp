@@ -5,7 +5,7 @@ from .models import Question, Submitter, Choice, Answer
 class SubmitterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Submitter
-        fields = ['id', 'name', 'gender', 'answer']
+        fields = '__all__'
 
 
 class ChoiceSerializer(serializers.ModelSerializer):
@@ -21,7 +21,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        fields = ['question', 'choice']
+        fields = ['id', 'question', 'choice']
 
 
 class AnswerSerializer(serializers.ModelSerializer):
